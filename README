@@ -1,0 +1,141 @@
+# 📰 News Sentiment Analyzer & Hindi Audio Summarizer  
+
+## 📜 Overview  
+This project is an end-to-end **News Sentiment Analysis and Audio Summary Generator**.  
+Given a company name, it:  
+- Fetches the latest news articles from NewsAPI.  
+- Extracts summaries and detects sentiment (Positive/Negative/Neutral).  
+- Identifies key topics using RAKE.  
+- Uses zero-shot classification to categorize the articles.  
+- Performs comparative sentiment analysis across articles.  
+- Translates combined summaries to Hindi.  
+- Generates a Hindi audio file using Google Text-to-Speech (gTTS).  
+
+---
+
+## 🚀 Features  
+✅ Fetch latest news articles using NewsAPI  
+✅ Sentiment analysis with VADER  
+✅ Keyword extraction using RAKE  
+✅ Categorization using Facebook’s BART large MNLI model  
+✅ Comparative sentiment analysis across multiple articles  
+✅ English-to-Hindi translation using MarianMT (Helsinki-NLP model)  
+✅ Audio summary generation in Hindi (gTTS)  
+✅ Clean REST API endpoints using FastAPI  
+✅ CORS-enabled for frontend integration  
+
+---
+
+## 📂 Project Structure  
+
+```
+📁 project_root/
+│
+├── api.py               # FastAPI app with GET endpoint  
+├── utils1.py            # Core logic for fetching articles, analyzing sentiment, translation, audio generation  
+├── requirements.txt     # Python dependencies  
+├── audio_files/         # Auto-generated folder for saving audio summaries  
+└── README.md            # Project documentation  
+```
+
+---
+
+## ⚙️ How to Run  
+
+### 1️⃣ Clone the repository:  
+```bash
+git clone <your_repo_link>
+cd <your_repo_folder>
+```
+
+### 2️⃣ Install dependencies:  
+```bash
+pip install -r requirements.txt
+```
+
+### 3️⃣ Set up environment:  
+- Replace `NEWS_API_KEY` in `utils1.py` with your own NewsAPI key.
+
+### 4️⃣ Run the FastAPI server:  
+```bash
+uvicorn api:app --reload
+```
+
+### 5️⃣ Test in browser or API client:  
+```
+http://127.0.0.1:8000/analyze/?company_name=Meta
+```
+
+---
+
+## 🎯 Example API Response  
+```json
+{
+    "Company": "Meta",
+    "Articles": [
+        {
+            "Title": "Meta’s latest AI release...",
+            "Summary": "Meta has released...",
+            "Sentiment": "Positive",
+            "Topics": ["AI release", "Meta stock", "market impact"],
+            "Categories": ["company growth", "market analysis", "investment opportunity"]
+        }
+    ],
+    "Comparative Sentiment Score": {
+        "Positive": 6,
+        "Negative": 2,
+        "Neutral": 2
+    },
+    "Coverage Differences": [
+        {
+            "Comparison": "Article 1 talks about Meta's product launch..., while Article 2 focuses on financial risks...",
+            "Impact": "Investors may interpret differently based on focus areas."
+        }
+    ],
+    "Topic Overlap": {
+        "Common Topics": ["Meta stock"],
+        "Unique Topics per Article": [["AI release"], ["financial risks"]]
+    },
+    "Final Sentiment Analysis": "Meta’s latest news coverage seems mostly positive.",
+    "Audio_File": "audio_files/combined_summary_hindi.mp3"
+}
+```
+
+---
+
+## ✅ Technologies Used  
+- **Python**  
+- **FastAPI**  
+- **BeautifulSoup & Newspaper3k**  
+- **NewsAPI**  
+- **Helsinki-NLP MarianMT (for translation)**  
+- **gTTS (Google Text-to-Speech)**  
+- **VADER Sentiment Analysis**  
+- **RAKE-NLTK**  
+- **Facebook BART-large MNLI (zero-shot classification)**  
+
+---
+
+## 📢 Future Improvements  
+- Add frontend dashboard  
+- Support for multi-language audio  
+- Automated deployment on cloud  
+
+---
+
+## 🤝 Contributing  
+Pull requests are welcome! If you’d like to contribute, please fork the repo and submit a PR.  
+
+---
+
+## 🛡 License  
+This project is open source under the [MIT License](LICENSE).  
+
+---
+
+> ⭐ If you like this project, don't forget to star it!  
+
+---
+
+### ➡ Ready to copy-paste and push!  
+Would you like me to also create the `requirements.txt` file content for you?
